@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>LicenceMyWhippet</title>
-    <%= csrf_meta_tags %>
+<% content_for(:homepage_url) { '/' } %>
+<% content_for(:page_title) { 'GOV.UK - Licence my whippet' } %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+<% content_for(:head) do %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+<% end %>
 
-  <body>
+<% content_for(:header_class) do %>with-proposition<% end %>
+<% content_for(:proposition_header) do %>
+  <div class="header-proposition">
+    <div class="content">
+      <nav id="proposition-menu">
+        <a href="/" id="proposition-name">Licence my whippet</a>
+      </nav>
+    </div>
+  </div>
+<% end %>
+
+<% content_for(:content) do %>
+  <main id="content" role="main">
+    <div class="phase-banner-beta">
+      <p>
+        <strong class="phase-tag">demo</strong>
+        <span>This is a demonstration of the <a href="https://github.com/ministryofjustice/form-app-architecture" target="_blank">MoJ Form Application Architecture</a></span>
+      </p>
+    </div>
+
     <%= yield %>
-  </body>
-</html>
+  </main>
+<% end %>
+
+<%= render template: 'layouts/govuk_template' %>
